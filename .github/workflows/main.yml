@@ -7,6 +7,7 @@ on:
   # Triggers the workflow on pushe events but only for the main branch
   push:
     branches: [ main ]
+  workflow_dispatch:
     
 jobs:
   # This workflow contains a single job called "build"
@@ -23,6 +24,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+          cache: maven
           
       - name: Step 3 - Build maven project
         run:  mvn clean compile package -Dmaven.test.skip=true
